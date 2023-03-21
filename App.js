@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { ThemeManager, Colors } from 'react-native-ui-lib';
+import Navigator from './src/Navigator';
+
+Colors.loadColors({
+  primary: '#009872'
+});
+
+const buttonTheme = {
+  backgroundColor: Colors.primary,
+  borderRadius: 10,
+  height: 50,
+  labelStyle: {
+    fontWeight: 'bold',
+    color: 'white',
+  },
+};
+ThemeManager.setComponentTheme('Button', buttonTheme);
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Navigator />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
