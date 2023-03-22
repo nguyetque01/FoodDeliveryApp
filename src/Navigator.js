@@ -40,7 +40,12 @@ function MainTabs() {
       screenOptions={{
         tabBarActiveTintColor: '#009872',
         headerShown: false,
+        tabBarStyle: {
+          height: 58,
+          paddingBottom: 8
+        }
       }}
+
     >
       <Tab.Screen
         name="HomeStack"

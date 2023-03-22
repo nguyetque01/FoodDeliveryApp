@@ -12,7 +12,7 @@ const HomeScreen = () => {
     };
 
     return (
-        <View>
+        <View marginB-78>
             <StatusBar barStyle="light-content"
                 backgroundColor={Colors.green20}
                 translucent
@@ -23,7 +23,7 @@ const HomeScreen = () => {
                 <View paddingH-12>
                     <View marginT-3>
                         <View row flex spread marginV-10>
-                            <Text text60 grey10 >Các quán nổi bật</Text>
+                            <Text text60 grey10>Các quán nổi bật</Text>
                             <TouchableOpacity>
                                 <Text text80 green10>Xem tất cả</Text>
                             </TouchableOpacity>
