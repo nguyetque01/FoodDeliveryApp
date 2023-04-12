@@ -1,9 +1,13 @@
 import React from 'react'
 import { ThemeManager, Colors } from 'react-native-ui-lib';
-import Navigator from './src/Navigator';
+import Navigation from './src/navigation/Navigation';
 
 Colors.loadColors({
-  primary: '#009872'
+  primary: '#0A8791',
+  yellow: '#FBA83C',
+  green: '#24C869',
+  grey: '#C2C2CB',
+  black: '#0E122B',
 });
 
 const buttonTheme = {
@@ -19,6 +23,6 @@ ThemeManager.setComponentTheme('Button', buttonTheme);
 
 export default function App() {
   return (
-    <Navigator />
+    <Navigation />
   );
 }

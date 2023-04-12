@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { StyleSheet, StatusBar, ScrollView, FlatList } from 'react-native';
 import { Colors, Text, View, SegmentedControl, TouchableOpacity } from 'react-native-ui-lib';
 import { HomeHeader, RestaurantCard, RestaurantItem } from '../components';
-import restaurants from '../fake-data/restaurants';
+import { RESTAURANTS } from '../data';
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
+
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const handleIndexChange = (index) => {
@@ -14,11 +15,10 @@ const HomeScreen = () => {
     return (
         <View marginB-78>
             <StatusBar barStyle="light-content"
-                backgroundColor={Colors.green20}
+                backgroundColor={Colors.primary}
                 translucent
             />
             <HomeHeader />
-
             <ScrollView>
                 <View paddingH-12>
                     <View marginT-3>
@@ -29,18 +29,17 @@ const HomeScreen = () => {
                             </TouchableOpacity>
                         </View>
                         <FlatList
-                            data={restaurants}
+                            data={RESTAURANTS}
                             horizontal
                             showsHorizontalScrollIndicator={false}
                             keyExtractor={(item) => item.id.toString()}
-                            contentContainerStyle={styles.popularRestaurantsContainer}
                             renderItem={({ item }) => (
-                                <RestaurantCard key={item.id} item={item} />
+                                <RestaurantCard key={item.id} item={item} navigation={props.navigation} />
                             )}
                         />
                     </View>
 
-                    <View marginT-16>
+                    <View marginT-16 marginB-125>
                         <SegmentedControl
                             segments={[
                                 { label: 'Gần tôi', value: 0 },
@@ -51,15 +50,20 @@ const HomeScreen = () => {
                             ]}
                             selectedIndex={selectedIndex}
                             onValueChange={handleIndexChange}
-                            activeColor={Colors.green20}
+                            activeColor={Colors.primary}
                             borderRadius={10}
                             containerStyle={styles.segmentedControlContainer}
                             textStyle={styles.segmentedControlText}
                             activeTextStyle={styles.segmentedControlActiveText}
                         />
-                        {restaurants.map((item) => (
-                            <RestaurantItem key={item.id} item={item} />
-                        ))}
+                        <FlatList
+                            data={RESTAURANTS}
+                            keyExtractor={(item) => item.id.toString()}
+                            renderItem={({ item }) => (
+                                <RestaurantItem key={item.id} item={item} navigation={props.navigation} />
+                            )}
+                            scrollEnabled={false}
+                        />
                     </View>
                 </View>
             </ScrollView>
@@ -72,12 +76,12 @@ const styles = StyleSheet.create({
         marginBottom: 8
     },
     segmentedControlText: {
-        color: Colors.grey40,
+        color: Colors.primary,
         fontWeight: 'bold',
         fontSize: 16,
     },
     segmentedControlActiveText: {
-        color: Colors.green20,
+        color: Colors.primary,
         fontWeight: 'bold',
         fontSize: 16,
     },

@@ -3,9 +3,9 @@ import { StyleSheet } from 'react-native';
 import { Colors, Text, View, Badge, Card, TouchableOpacity, Image } from 'react-native-ui-lib';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const RestaurantItem = ({ item }) => {
+const RestaurantItem = ({ item, navigation }) => {
     return (
-        <TouchableOpacity key={item.id} marginB-12>
+        <TouchableOpacity onPress={() => { navigation.navigate('Restaurant', { restaurantId: item.id }) }} key={item.id} marginB-12 >
             <Card row padding-8>
                 <View paddingB-4 style={{ aspectRatio: 1 }}>
                     <Image source={item.image} width='100%' height='100%' style={{ borderRadius: 10 }} />
