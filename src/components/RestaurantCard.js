@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native';
 import { Colors, Text, View, Card, TouchableOpacity, Image } from 'react-native-ui-lib';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const RestaurantCard = ({ item }) => {
+const RestaurantCard = ({ item, navigation }) => {
     return (
-        <TouchableOpacity>
-            <Card style={styles.popularRestaurantCard}>
+        <TouchableOpacity onPress={() => { navigation.navigate('Restaurant', { restaurantId: item.id }) }}>
+            <Card key={item.id} style={styles.popularRestaurantCard}>
                 <Image source={item.image} resizeMode="cover" style={styles.popularRestaurantImage} />
                 <View padding-10>
                     <Text marginB-3 style={{ fontSize: 18, fontWeight: 600 }}>{item.name}</Text>
