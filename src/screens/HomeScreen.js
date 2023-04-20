@@ -1,30 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, StatusBar, ScrollView, FlatList } from 'react-native';
 import { Colors, Text, View, SegmentedControl, TouchableOpacity } from 'react-native-ui-lib';
 import { HomeHeader, RestaurantCard, RestaurantItem } from '../components';
 import { RESTAURANTS } from '../data';
-
 const HomeScreen = (props) => {
-
     const [selectedIndex, setSelectedIndex] = useState(0);
-
     const handleIndexChange = (index) => {
         setSelectedIndex(index);
     };
 
     return (
-        <View marginB-78>
+        <View marginB-84>
             <StatusBar barStyle="light-content"
                 backgroundColor={Colors.primary}
                 translucent
             />
-            <HomeHeader />
+            <HomeHeader navigation={props.navigation} />
             <ScrollView>
                 <View paddingH-12>
                     <View marginT-3>
                         <View row flex spread marginV-10>
                             <Text text60 grey10>Các quán nổi bật</Text>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.navigation.navigate("Xem tất cả")}>
                                 <Text text80 green10>Xem tất cả</Text>
                             </TouchableOpacity>
                         </View>

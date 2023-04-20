@@ -1,19 +1,57 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { StyleSheet, FlatList, StatusBar, ScrollView } from 'react-native';
 import { View, Text, Image, Colors, Badge, TouchableOpacity } from 'react-native-ui-lib';
 import { FoodCard } from '../components'
 import { RESTAURANTS, FOODS, CATEGORIES } from '../data'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons';
+import { useSelector, useDispatch } from 'react-redux';
 
-const RestaurantScreen = (props) => {
-    const { restaurantId } = props.route.params;
-    const restaurant = RESTAURANTS.find(item => item.id == restaurantId)
-    const foods = FOODS.filter(item => item.restaurantId == restaurantId)
+const RestaurantScreen = ({ navigation, route }) => {
+    // Lấy ra nhà hàng
+    const { restaurantId } = route.params;
+    // Lấy ra trạng thái nhà hàng
+    const availableRestaurants = useSelector(state => state.filterRestaurants)
+    const restaurant = availableRestaurants.find(item => item.id == restaurantId)
+    // Lấy ra trạng thái các món ăn
+    const availableFoods = useSelector(state => state.filterFoods)
+    const foods = availableFoods.filter(item => item.restaurantId == restaurantId)
+
+    const dispatch = useDispatch();
+
+    // Lấy ra nhà hàng yêu thích và thêm vào yêu thích
+    const isFav = useSelector(state => state.favRestaurants.find(item => item.id == restaurantId))
+    const addToFav = () => {
+        dispatch({ type: 'TOGGLE_FAVORITE_RESTAURANT', restaurantId: restaurantId })
+    }
+
+    // Thay đổi cartItems khi thêm bớt số lượng món ăn
+    const [cartItems, setCartItems] = useState([]);
+    const onQuantityChange = (foodId, food, quantity) => {
+        setCartItems(prevCartItems => {
+            const newCartItems = [...prevCartItems];
+            const index = newCartItems.findIndex(item => item.foodId === foodId);
+            if (index === -1) {
+                newCartItems.push({ foodId, quantity, food });
+            } else {
+                newCartItems[index].quantity = quantity;
+            }
+            return newCartItems;
+        });
+    };
+    // Thêm vào giỏ hàng
+    const addToCart = () => {
+        dispatch({ type: 'ADD_MANY_TO_CART', cartItems: cartItems })
+    }
+    const handleAddToCart = () => {
+        addToCart();
+        navigation.navigate("Cart")
+    }
+
     const [selectedIndex, setSelectedIndex] = useState(0);
-    const [isFav, setIsFav] = useState(false);
+
     useEffect(() => {
-        props.navigation.setOptions({
+        navigation.setOptions({
             headerShown: true,
             headerTransparent: true,
             headerStyle: {
@@ -34,10 +72,18 @@ const RestaurantScreen = (props) => {
                 </View>
             ),
         });
-    }, [props.navigation, isFav]);
+        navigation.getParent()?.setOptions({
+            tabBarStyle: {
+                display: "none"
+            }
+        });
+        return () => navigation.getParent()?.setOptions({
+            tabBarStyle: undefined
+        });
+    }, [navigation, isFav]);
 
     return (
-        <View flex-1>
+        <View flex-1 bg-white>
             <StatusBar barStyle="dark-content" translucent backgroundColor="transparent" />
             <ScrollView>
                 <Image
@@ -47,7 +93,7 @@ const RestaurantScreen = (props) => {
                 <View style={styles.infoContainer}>
                     <View row spread centerV>
                         <Text style={styles.name}>{restaurant.name}</Text>
-                        <TouchableOpacity style={{ marginRight: 10 }} onPress={() => setIsFav(!isFav)}>
+                        <TouchableOpacity style={{ marginRight: 10 }} onPress={() => addToFav()}>
                             <Ionicons name={isFav ? 'heart' : 'heart-outline'} size={35} color={Colors.red30} style={styles.icon} />
                         </TouchableOpacity>
                     </View>
@@ -77,7 +123,7 @@ const RestaurantScreen = (props) => {
                 <View flex-1 bg-white paddingH-10>
                     <View style={styles.filterContainer}>
                         <FlatList
-                            data={[{ id: 0, name: 'Tất cả' }, ...CATEGORIES]}
+                            data={CATEGORIES}
                             horizontal
                             showsHorizontalScrollIndicator={false}
                             keyExtractor={(item) => item.id.toString()}
@@ -95,13 +141,35 @@ const RestaurantScreen = (props) => {
                         data={foods}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) =>
-                            <FoodCard key={item.id} item={item} navigation={props.navigation} />
+                            <FoodCard
+                                key={item.id}
+                                item={item}
+                                navigation={navigation}
+                                showQuantity={true}
+                                onQuantityChange={value => onQuantityChange(item.id, item, value)}
+                            />
                         }
                         scrollEnabled={false}
                     />
 
+
                 </View>
             </ScrollView>
+            <View style={styles.bottomBar}>
+                <TouchableOpacity
+                    onPress={() => handleAddToCart()}
+                    backgroundColor={Colors.primary}
+                    style={styles.bottomButton}
+                >
+                    <Icon name='plus' size={20} color={Colors.white}></Icon>
+                    <Text
+                        color={Colors.white}
+                        style={styles.bottomButtonTitle}
+                    >
+                        Thêm Vào Giỏ Hàng
+                    </Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };
@@ -166,5 +234,22 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '600',
         color: Colors.dark
+    },
+    bottomBar: {
+        paddingVertical: 12,
+        paddingHorizontal: 24,
+        backgroundColor: Colors.white
+    },
+    bottomButton: {
+        flexDirection: 'row',
+        paddingVertical: 12,
+        borderRadius: 12,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    bottomButtonTitle: {
+        fontSize: 20,
+        fontWeight: '600',
+        marginLeft: 8
     }
 });    
