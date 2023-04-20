@@ -1,6 +1,10 @@
+import 'react-native-gesture-handler';
 import React from 'react'
 import { ThemeManager, Colors } from 'react-native-ui-lib';
 import Navigation from './src/navigation/Navigation';
+import { legacy_createStore as createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './src/store/reducer'
 
 Colors.loadColors({
   primary: '#0A8791',
@@ -21,8 +25,12 @@ const buttonTheme = {
 };
 ThemeManager.setComponentTheme('Button', buttonTheme);
 
+const store = createStore(reducer)
+
 export default function App() {
   return (
-    <Navigation />
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
   );
 }

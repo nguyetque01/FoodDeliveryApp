@@ -8,6 +8,9 @@ const RESTAURANTS = [
         deliveryTime: 40,
         reviewCount: 527,
         image: require('../assets/images/restaurants/pho-hoa.jpg'),
+        isFav: true,
+        isBrand: false,
+        isSale: false,
     },
     {
         id: '2',
@@ -18,6 +21,9 @@ const RESTAURANTS = [
         deliveryTime: 35,
         reviewCount: 408,
         image: require('../assets/images/restaurants/bun-cha-huong-lien.jpg'),
+        isFav: false,
+        isBrand: false,
+        isSale: true,
     },
     {
         id: '3',
@@ -28,6 +34,9 @@ const RESTAURANTS = [
         deliveryTime: 25,
         reviewCount: 292,
         image: require('../assets/images/restaurants/banh-xeo-46A.jpg'),
+        isFav: true,
+        isBrand: false,
+        isSale: false,
     },
     {
         id: '4',
@@ -38,6 +47,9 @@ const RESTAURANTS = [
         deliveryTime: 20,
         reviewCount: 188,
         image: require('../assets/images/restaurants/banh-mi-phuong.jpg'),
+        isFav: false,
+        isBrand: false,
+        isSale: true,
     },
     {
         id: '5',
@@ -48,6 +60,9 @@ const RESTAURANTS = [
         deliveryTime: 30,
         reviewCount: 1273,
         image: require('../assets/images/restaurants/com-tam-cali.jpg'),
+        isFav: true,
+        isBrand: true,
+        isSale: false,
     },
     {
         id: '6',
@@ -58,6 +73,9 @@ const RESTAURANTS = [
         deliveryTime: 50,
         reviewCount: 1537,
         image: require('../assets/images/restaurants/cha-ca-la-vong.jpg'),
+        isFav: false,
+        isBrand: false,
+        isSale: false,
     },
     {
         id: '7',
@@ -68,6 +86,9 @@ const RESTAURANTS = [
         deliveryTime: 35,
         reviewCount: 237,
         image: require('../assets/images/restaurants/goi-du-du-ty-thy.jpg'),
+        isFav: true,
+        isBrand: true,
+        isSale: false,
     },
     {
         id: '8',
@@ -78,6 +99,9 @@ const RESTAURANTS = [
         deliveryTime: 45,
         reviewCount: 1477,
         image: require('../assets/images/restaurants/bun-rieu-cua-dong-ba.jpg'),
+        isFav: false,
+        isBrand: false,
+        isSale: true,
     },
     {
         id: '9',
@@ -88,6 +112,9 @@ const RESTAURANTS = [
         deliveryTime: 30,
         reviewCount: 547,
         image: require('../assets/images/restaurants/banh-cuon-tay-ho.jpg'),
+        isFav: false,
+        isBrand: false,
+        isSale: true,
     },
     {
         id: '10',
@@ -98,6 +125,9 @@ const RESTAURANTS = [
         deliveryTime: 25,
         reviewCount: 527,
         image: require('../assets/images/restaurants/mien-tron-thanh-xuan.jpg'),
+        isFav: true,
+        isBrand: true,
+        isSale: true,
     },
 ];
 export default RESTAURANTS;

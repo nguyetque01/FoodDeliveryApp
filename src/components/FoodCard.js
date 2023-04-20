@@ -1,10 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { Colors, Text, View, Image, TouchableOpacity, Card } from 'react-native-ui-lib';
 import CustomStepper from './CustomStepper';
+import { MaterialIcons } from '@expo/vector-icons';
+const FoodCard = ({
+    item,
+    navigation,
+    showQuantity,
+    initialQuantity = 0,
+    onQuantityChange,
+    showDeleteButton = false
+}) => {
 
-const FoodCard = ({ item, navigation }) => {
     const [quantity, setQuantity] = useState(0);
+
+    useEffect(() => {
+        setQuantity(initialQuantity);
+    }, [initialQuantity]);
+
+    const handleQuantity = (value) => {
+        setQuantity(value)
+        onQuantityChange(value)
+    }
+
+    const handelDelete = () => {
+        setQuantity(0)
+        onQuantityChange(0)
+    }
+
     return (
         <View>
             <TouchableOpacity onPress={() => { navigation.navigate('Food', { foodId: item.id }) }} key={item.id} marginB-12>
@@ -13,17 +36,25 @@ const FoodCard = ({ item, navigation }) => {
                         <Image source={item.image} style={styles.image} />
                     </View>
                     <View paddingL-15 >
-                        <Text style={styles.name}>{item.name}</Text>
+                        <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">{item.name}</Text>
                         <Text style={styles.description} numberOfLines={2} ellipsizeMode="tail">{item.description}</Text>
                         <View row centerV>
                             <Text style={styles.price}>{item.price.toLocaleString()} VNĐ</Text>
-                            <CustomStepper
-                                onValueChange={(value) => setQuantity(value)}
-                                minValue={0}
-                                maxValue={10}
-                                value={quantity}
-                            />
+                            {showQuantity === true &&
+                                <CustomStepper
+                                    onValueChange={(value) => handleQuantity(value)}
+                                    minValue={0}
+                                    maxValue={10}
+                                    value={quantity}
+                                />
+                            }
                         </View>
+                        {
+                            showDeleteButton === true &&
+                            <TouchableOpacity style={styles.deleteButton} onPress={() => handelDelete()}>
+                                <MaterialIcons name="delete" size={28} color={Colors.grey30} />
+                            </TouchableOpacity>
+                        }
                     </View>
                 </Card>
             </TouchableOpacity>
@@ -37,6 +68,7 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 20,
         fontWeight: 600,
+        width: 200
     },
     image: {
         borderRadius: 10,
@@ -52,6 +84,12 @@ const styles = StyleSheet.create({
     price: {
         fontSize: 18,
         fontWeight: 600,
-        color: Colors.yellow10
+        color: Colors.yellow10,
+        marginRight: 70
+    },
+    deleteButton: {
+        position: 'absolute',
+        right: 0,
+        top: 0
     }
 })
