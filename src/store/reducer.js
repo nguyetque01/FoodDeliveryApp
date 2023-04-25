@@ -7,7 +7,11 @@ const initialState = {
     restaurants: RESTAURANTS,
     filterRestaurants: RESTAURANTS,
     favRestaurants: RESTAURANTS.filter(restaurant => restaurant.isFav === true),
-    cartItems: []
+    cartItems: [],
+    auth: {
+        isLoggedIn: false,
+        user: {},
+    }
 }
 
 const reducer = (state = initialState, action) => {
@@ -99,7 +103,6 @@ const reducer = (state = initialState, action) => {
     if (action.type === 'DELETE_FROM_CART') {
         const itemIdToRemove = action.foodId;
         const updatedCartItems = state.cartItems.filter((item) => item.foodId !== itemIdToRemove);
-        console.log(updatedCartItems)
         return { ...state, cartItems: updatedCartItems };
     }
     return state

@@ -6,8 +6,11 @@ import FilterScreen from "./FilterScreen";
 import FilteredItemsScreen from "./FilteredItemsScreen";
 import ShowAllScreen from "./ShowAllScreen";
 import CartScreen from "./CartScreen";
+import CheckoutScreen from "./CheckoutScreen";
+import OrdersScreen from "./OrdersScreen";
 import LoginScreen from "./LoginScreen";
 import RegisterScreen from "./RegisterScreen";
+import ProfileScreen from "./ProfileScreen";
 
 export {
     HomeScreen,
@@ -18,6 +21,9 @@ export {
     FilteredItemsScreen,
     ShowAllScreen,
     CartScreen,
+    CheckoutScreen,
+    OrdersScreen,
     LoginScreen,
-    RegisterScreen
+    RegisterScreen,
+    ProfileScreen
 };

@@ -15,33 +15,20 @@ import {
   FilterScreen,
   FilteredItemsScreen,
   CartScreen,
-  ShowAllScreen
+  CheckoutScreen,
+  OrdersScreen,
+  ShowAllScreen,
+  ProfileScreen
 } from '../screens';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
-function Orders() {
-  return (
-    <View flex-1 center>
-      <Text text50>Orders</Text>
-    </View>
-  );
-}
-
-
-function Profile() {
-  return (
-    <View flex-1 center>
-      <Text text50>Profile</Text>
-    </View>
-  );
-}
-
 function MainStack() {
   return (
     <Stack.Navigator
+      initialRouteName="Home"
       screenOptions={{
         headerStyle: {
           backgroundColor: Colors.primary,
@@ -63,19 +50,73 @@ function MainStack() {
         name="Food"
         component={FoodScreen}
       />
+
+    </Stack.Navigator>
+  );
+}
+
+function ProfileStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="ProfileScreen"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.primary,
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+        headerShown: true,
+      }}
+    >
+      <Stack.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
+        options={{
+          title: 'Tài khoản',
+        }}
+      />
       <Stack.Screen
         name="Login"
         component={LoginScreen}
         options={{
           title: 'Đăng nhập',
-          headerShown: true
         }}
       />
       <Stack.Screen name="Register"
         component={RegisterScreen}
         options={{
           title: 'Đăng ký',
-          headerShown: true
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function CartStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="CartScreen"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.primary,
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+        headerShown: true,
+      }}
+    >
+      <Stack.Screen
+        name="CartScreen"
+        component={CartScreen}
+        options={{
+          headerTitle: 'Giỏ hàng',
+        }}
+      />
+      <Stack.Screen
+        name="Checkout"
+        component={CheckoutScreen}
+        options={{
+          headerTitle: 'Thanh Toán',
         }}
       />
     </Stack.Navigator>
@@ -116,7 +157,7 @@ function MainTab({ navigation }) {
       />
       <Tab.Screen
         name="Orders"
-        component={Orders}
+        component={OrdersScreen}
         options={{
           tabBarLabel: 'Đơn hàng',
           headerTitle: 'Đơn hàng',
@@ -127,10 +168,11 @@ function MainTab({ navigation }) {
       />
       <Tab.Screen
         name="Cart"
-        component={CartScreen}
+        component={CartStack}
         options={{
           tabBarLabel: 'Giỏ hàng',
           headerTitle: 'Giỏ hàng',
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="cart" color={color} size={size} />
           ),
@@ -149,10 +191,11 @@ function MainTab({ navigation }) {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileStack}
         options={{
           tabBarLabel: 'Tài khoản',
           headerTitle: 'Tài khoản',
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
