@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { StyleSheet, FlatList, StatusBar, ScrollView } from 'react-native';
+import { StyleSheet, FlatList, StatusBar, ScrollView, Alert } from 'react-native';
 import { View, Text, Image, Colors, Badge, TouchableOpacity } from 'react-native-ui-lib';
 import { FoodCard } from '../components'
 import { RESTAURANTS, FOODS, CATEGORIES } from '../data'
@@ -44,6 +44,7 @@ const RestaurantScreen = ({ navigation, route }) => {
         dispatch({ type: 'ADD_MANY_TO_CART', cartItems: cartItems })
     }
     const handleAddToCart = () => {
+        console.log(cartItems)
         addToCart();
         navigation.navigate("Cart")
     }
@@ -151,8 +152,6 @@ const RestaurantScreen = ({ navigation, route }) => {
                         }
                         scrollEnabled={false}
                     />
-
-
                 </View>
             </ScrollView>
             <View style={styles.bottomBar}>

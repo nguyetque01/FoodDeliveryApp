@@ -5,19 +5,19 @@ import { FoodCard } from '../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+
 const CartScreen = ({ navigation }) => {
-    // Lấy ra danh sách giỏ hàng từ store
-    const cartItems = useSelector(state => state.cartItems)
 
-    // Tạo danh sách giỏ hàng mới để thay đổi
-    const [newCartItems, setNewCartItems] = useState([])
+    const cartItems = useSelector(state => state.cartItems)  // Lấy ra danh sách giỏ hàng từ store
+    const [newCartItems, setNewCartItems] = useState(cartItems) // Tạo danh sách giỏ hàng mới để thay đổi
 
-    // Gán cartItems cho newCartItems mỗi khi tải màn hình
+    const dispatch = useDispatch();
+
     useEffect(() => {
+        // Gán cartItems cho newCartItems
         setNewCartItems(cartItems);
     }, [cartItems]);
 
-    const dispatch = useDispatch();
     // Cập nhật lên store mỗi khi giỏ hàng thay đổi
     const onQuantityChange = useCallback((foodId, food, quantity) => {
         setNewCartItems(prevCartItems => {
@@ -36,10 +36,18 @@ const CartScreen = ({ navigation }) => {
                 }
                 dispatch({ type: 'UPDATE_CART', cartItems: newCartItems })
             }
-            console.log(newCartItems)
             return newCartItems;
         });
     }, [dispatch, newCartItems]);
+
+
+    const getTotalPrice = () => {
+        let subTotalPrice = 0;
+        newCartItems.forEach(item => {
+            subTotalPrice += item.quantity * item.food.price;
+        });
+        return subTotalPrice;
+    }
 
     return (
         <View flex-1>
@@ -69,9 +77,19 @@ const CartScreen = ({ navigation }) => {
                         </View>
                         <View flex-1></View>
                     </ScrollView>
+                    <View paddingH-24 paddingB-10>
+                        <View marginT-20 style={{ borderTopWidth: 1, borderTopColor: Colors.grey40 }}>
+                            <View row spread marginT-14>
+                                <Text text60M color={Colors.dark}>Tổng tiền:</Text>
+                                <Text text60M color={Colors.dark}>{getTotalPrice().toLocaleString()}đ</Text>
+                            </View>
+                        </View>
+                    </View>
+
+                    {/* BOTTOM BAR */}
                     <View style={styles.bottomBar}>
                         <TouchableOpacity
-                            onPress={() => null}
+                            onPress={() => navigation.navigate("Checkout")}
                             backgroundColor={Colors.primary}
                             style={styles.bottomButton}
                         >
@@ -116,6 +134,13 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '600',
         marginLeft: 8
+    },
+    input: {
+        height: 40,
+        borderWidth: 1,
+        borderColor: Colors.grey20,
+        paddingHorizontal: 12,
+        borderRadius: 8,
     }
 });
 
