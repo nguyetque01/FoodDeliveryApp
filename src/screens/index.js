@@ -8,6 +8,7 @@ import ShowAllScreen from "./ShowAllScreen";
 import CartScreen from "./CartScreen";
 import CheckoutScreen from "./CheckoutScreen";
 import OrdersScreen from "./OrdersScreen";
+import OrderDetailScreen from "./OrderDetailScreen";
 import LoginScreen from "./LoginScreen";
 import RegisterScreen from "./RegisterScreen";
 import ProfileScreen from "./ProfileScreen";
@@ -23,6 +24,7 @@ export {
     CartScreen,
     CheckoutScreen,
     OrdersScreen,
+    OrderDetailScreen,
     LoginScreen,
     RegisterScreen,
     ProfileScreen

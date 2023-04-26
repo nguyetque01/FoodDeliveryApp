@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, StatusBar, ScrollView, FlatList } from 'react-native';
-import { Constants, Colors, Text, View, SegmentedControl, TouchableOpacity } from 'react-native-ui-lib';
-import { HomeHeader, RestaurantItem, FoodCard } from '../components';
-import { RESTAURANTS, FOODS, CATEGORIES } from '../data'
+import { Colors, Text, View, TouchableOpacity } from 'react-native-ui-lib';
+import { RestaurantItem, FoodCard } from '../components';
 import { useSelector } from 'react-redux';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const ShowAllScreen = ({ navigation }) => {
