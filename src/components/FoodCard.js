@@ -49,8 +49,7 @@ const FoodCard = ({
                                 />
                             }
                         </View>
-                        {
-                            showDeleteButton === true &&
+                        {showDeleteButton === true &&
                             <TouchableOpacity style={styles.deleteButton} onPress={() => handelDelete()}>
                                 <MaterialIcons name="delete" size={28} color={Colors.grey30} />
                             </TouchableOpacity>

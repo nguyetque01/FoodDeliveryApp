@@ -5,12 +5,9 @@ import { FoodCard } from '../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-
 const CartScreen = ({ navigation }) => {
-
     const cartItems = useSelector(state => state.cartItems)  // Lấy ra danh sách giỏ hàng từ store
     const [newCartItems, setNewCartItems] = useState(cartItems) // Tạo danh sách giỏ hàng mới để thay đổi
-
     const dispatch = useDispatch();
 
     useEffect(() => {

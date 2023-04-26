@@ -3,23 +3,34 @@ import { StyleSheet, FlatList, ScrollView, StatusBar } from 'react-native'
 import { Colors, Text, View, TouchableOpacity, Constants, Switch } from 'react-native-ui-lib';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { CATEGORIES } from '../data';
+import { CATEGORIES, FOODS } from '../data';
 import { useDispatch, useSelector } from 'react-redux';
 
+
+const ratingList = [
+    { id: 0, rating: 'Tất cả' },
+    { id: 1, rating: '1' },
+    { id: 2, rating: '2' },
+    { id: 3, rating: '3' },
+    { id: 4, rating: '4' },
+    { id: 5, rating: '5' }
+]
+
 const priceRange = [
-    { id: 1, price: '< 50K' },
-    { id: 2, price: '50K - 100K' },
-    { id: 3, price: '100K - 200K' },
-    { id: 4, price: '200K- 500K' },
-    { id: 5, price: '> 500K' }
+    { id: 0, price: 'Tất cả' },
+    { id: 1, price: '< 10K' },
+    { id: 2, price: '20K - 30K' },
+    { id: 3, price: '30K - 40K' },
+    { id: 4, price: '40K- 50K' },
+    { id: 5, price: '> 50K' }
 ]
 
 const FilterScreen = ({ navigation }) => {
     const [isBrandOn, setIsBrandOn] = useState(false);
     const [isSaleOn, setIsSaleOn] = useState(false);
-    const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(1);
-    const [selectedRatingIndex, setSelectedRatingIndex] = useState(1);
-    const [selectedPriceIndex, setSelectedPriceIndex] = useState(1);
+    const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
+    const [selectedRatingIndex, setSelectedRatingIndex] = useState(0);
+    const [selectedPriceIndex, setSelectedPriceIndex] = useState(0);
 
     const dispatch = useDispatch();
     const saveFilter = useCallback(() => {
@@ -53,7 +64,7 @@ const FilterScreen = ({ navigation }) => {
                 </TouchableOpacity>
             )
         })
-    }, [navigation, isBrandOn, isSaleOn])
+    }, [navigation, isBrandOn, isSaleOn, selectedCategoryIndex, selectedRatingIndex, selectedPriceIndex])
 
     return (
         <View style={styles.container}>
@@ -113,24 +124,25 @@ const FilterScreen = ({ navigation }) => {
                     <Text style={styles.title}>Đánh giá</Text>
                     <View marginT-12>
                         <FlatList
-                            data={[1, 2, 3, 4, 5]}
-                            keyExtractor={(item) => item}
+                            data={ratingList}
                             horizontal
                             showsHorizontalScrollIndicator={false}
                             renderItem={({ item }) => (
                                 <TouchableOpacity
-                                    onPress={() => setSelectedRatingIndex(item)}
-                                    backgroundColor={selectedRatingIndex == item ? Colors.primary : Colors.grey70}
+                                    onPress={() => setSelectedRatingIndex(item.id)}
+                                    backgroundColor={selectedRatingIndex == item.id ? Colors.primary : Colors.grey70}
                                     style={styles.ratingButton}
                                 >
                                     <Text
                                         marginR-6
-                                        color={selectedRatingIndex == item ? Colors.white : Colors.dark}
+                                        color={selectedRatingIndex == item.id ? Colors.white : Colors.dark}
                                         style={styles.buttonTitle}
                                     >
-                                        {item}
+                                        {item.rating}
                                     </Text>
-                                    <FontAwesome name="star" size={20} color={selectedRatingIndex == item ? Colors.white : Colors.yellow20} />
+                                    {item.id != 0 &&
+                                        <FontAwesome name="star" size={20} color={selectedRatingIndex == item.id ? Colors.white : Colors.yellow20} />
+                                    }
                                 </TouchableOpacity>
                             )}
                         />

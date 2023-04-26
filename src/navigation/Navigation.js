@@ -17,6 +17,7 @@ import {
   CartScreen,
   CheckoutScreen,
   OrdersScreen,
+  OrderDetailScreen,
   ShowAllScreen,
   ProfileScreen
 } from '../screens';
@@ -123,6 +124,37 @@ function CartStack() {
   );
 }
 
+function OrderStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="OrdersScreen"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.primary,
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+        headerShown: true,
+      }}
+    >
+      <Stack.Screen
+        name="OrdersScreen"
+        component={OrdersScreen}
+        options={{
+          headerTitle: 'Đơn hàng',
+        }}
+      />
+      <Stack.Screen
+        name="OrderDetail"
+        component={OrderDetailScreen}
+        options={{
+          headerTitle: 'Chi tiết đơn hàng',
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 function MainTab({ navigation }) {
   return (
     <Tab.Navigator
@@ -157,10 +189,11 @@ function MainTab({ navigation }) {
       />
       <Tab.Screen
         name="Orders"
-        component={OrdersScreen}
+        component={OrderStack}
         options={{
           tabBarLabel: 'Đơn hàng',
           headerTitle: 'Đơn hàng',
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="clipboard-list" color={color} size={size} />
           ),

@@ -11,7 +11,8 @@ const FOODS = [
         description: 'Một bát phở bò đầy đủ dinh dưỡng, với những lát thịt bò mềm và nước dùng thơm ngon.',
         ingredients: ['Bò', 'Hành tây', 'Gừng', 'Bún', 'Rau thơm'],
         rating: 4.5,
-        reviewCount: 120
+        reviewCount: 120,
+        categoryId: 1
     },
     {
         id: 2,
@@ -25,7 +26,8 @@ const FOODS = [
         description: 'Một bát phở gà ấm áp, với thịt gà mềm và nước dùng thơm ngon.',
         ingredients: ['Gà', 'Hành tây', 'Gừng', 'Bún', 'Rau thơm'],
         rating: 4.2,
-        reviewCount: 182
+        reviewCount: 182,
+        categoryId: 1
     },
     {
         id: 3,
@@ -39,7 +41,8 @@ const FOODS = [
         description: 'Một bát phở bò truyền thống, với những lát thịt bò tái và nước dùng thơm ngon.',
         ingredients: ['Bò tái', 'Hành tây', 'Gừng', 'Bún', 'Rau thơm'],
         rating: 4.8,
-        reviewCount: 112
+        reviewCount: 112,
+        categoryId: 1
     },
     {
         id: 4,
@@ -53,7 +56,8 @@ const FOODS = [
         description: 'Một món ăn truyền thống ngon miệng của Việt Nam với thịt heo nướng và bún.',
         ingredients: ['Thịt heo', 'Bún', 'Dưa leo', 'Rau sống', 'Bún', 'Nước mắm'],
         rating: 4.0,
-        reviewCount: 61
+        reviewCount: 61,
+        categoryId: 1
     },
     {
         id: 5,
@@ -67,7 +71,8 @@ const FOODS = [
         description: 'Một món ăn ngon miệng với cá viên, bún và rau thơm.',
         ingredients: ['Cá viên', 'Bún', 'Rau thơm', 'Hành tây', 'Đậu phộng'],
         rating: 4.3,
-        reviewCount: 119
+        reviewCount: 119,
+        categoryId: 1
     },
     {
         id: 6,
@@ -81,7 +86,8 @@ const FOODS = [
         description: 'Một món ăn ngon tuyệt với với chả giò, bún và rau thơm.',
         ingredients: ['Chả giò', 'Bún', 'Rau thơm', 'Hành tây', 'Đậu phộng'],
         rating: 4.6,
-        reviewCount: 121
+        reviewCount: 121,
+        categoryId: 1
     },
     {
         id: 7,
@@ -95,7 +101,8 @@ const FOODS = [
         description: 'Bánh xèo thơm ngon với nhân tôm tươi, ăn kèm rau sống và nước chấm đậm đà.',
         ingredients: ['Tôm', 'Bột nếp', 'Rau sống', 'Nước mắm', 'Đường'],
         rating: 4.6,
-        reviewCount: 100
+        reviewCount: 100,
+        categoryId: 7
     },
     {
         id: 8,
@@ -109,7 +116,8 @@ const FOODS = [
         description: 'Bánh xèo ngon với nhân thịt heo, ăn kèm nước chấm đặc trưng.',
         ingredients: ['Thịt heo', 'Bột nếp', 'Rau sống', 'Nước mắm', 'Đường'],
         rating: 4.3,
-        reviewCount: 70
+        reviewCount: 70,
+        categoryId: 7
     },
     {
         id: 9,
@@ -123,7 +131,8 @@ const FOODS = [
         description: 'Bánh xèo chay thơm ngon với nhân rau củ, ăn kèm nước chấm đậm đà.',
         ingredients: ['Rau củ', 'Bột nếp', 'Rau sống', 'Nước mắm', 'Đường'],
         rating: 4.1,
-        reviewCount: 50
+        reviewCount: 50,
+        categoryId: 7
     },
     {
         id: 10,
@@ -137,7 +146,8 @@ const FOODS = [
         description: 'Một chiếc bánh mì thơm ngon với thịt nướng mềm, rau thơm, dưa leo và nước sốt đậm đà.',
         ingredients: ['Thịt nướng', 'Bánh mì', 'Rau thơm', 'Dưa leo', 'Nước sốt'],
         rating: 4.7,
-        reviewCount: 90
+        reviewCount: 90,
+        categoryId: 2
     },
     {
         id: 11,
@@ -151,7 +161,8 @@ const FOODS = [
         description: 'Một chiếc bánh mì đặc trưng với bì heo mềm, rau thơm, đồ chua và nước sốt chấm.',
         ingredients: ['Bì heo', 'Bánh mì', 'Rau thơm', 'Đồ chua', 'Nước sốt'],
         rating: 4.2,
-        reviewCount: 50
+        reviewCount: 50,
+        categoryId: 2
     },
     {
         id: 12,
@@ -165,7 +176,8 @@ const FOODS = [
         description: 'Một chiếc bánh mì đầy đặn với heo quay giòn tan, rau thơm, dưa leo và nước sốt đậm đà.',
         ingredients: ['Thịt bò', 'Bánh mì', 'Rau thơm', 'Dưa leo', 'Nước sốt'],
         rating: 4.5,
-        reviewCount: 70
+        reviewCount: 70,
+        categoryId: 2
     },
     {
         id: 13,
@@ -179,7 +191,8 @@ const FOODS = [
         description: 'Một phần cơm tấm thơm ngon với sườn heo xào, trứng chiên và dưa leo.',
         ingredients: ['Sườn heo', 'Cơm tấm', 'Trứng chiên', 'Dưa leo'],
         rating: 4.6,
-        reviewCount: 80
+        reviewCount: 80,
+        categoryId: 1
     },
     {
         id: 14,
@@ -193,7 +206,8 @@ const FOODS = [
         description: 'Một phần cơm tấm thơm ngon với thịt gà xào, trứng chiên và dưa leo.',
         ingredients: ['Thịt gà', 'Cơm tấm', 'Trứng chiên', 'Dưa leo'],
         rating: 4.5,
-        reviewCount: 70
+        reviewCount: 70,
+        categoryId: 1
     },
     {
         id: 15,
@@ -207,7 +221,8 @@ const FOODS = [
         description: 'Một phần cơm tấm thơm ngon với đậu hủ xào, trứng chiên và dưa leo.',
         ingredients: ['Đậu hủ', 'Cơm tấm', 'Trứng chiên', 'Dưa leo'],
         rating: 4.3,
-        reviewCount: 60
+        reviewCount: 60,
+        categoryId: 1
     },
     {
         id: 16,
@@ -221,7 +236,8 @@ const FOODS = [
         description: 'Món ăn nổi tiếng của Hà Nội, gồm chả cá chiên giòn, ăn kèm với bánh tráng, rau sống, dưa hấu và nước mắm chua ngọt.',
         ingredients: ['Chả cá', 'Bánh tráng', 'Rau sống', 'Dưa hấu', 'Nước mắm'],
         rating: 4.8,
-        reviewCount: 100
+        reviewCount: 100,
+        categoryId: 1
     },
     {
         id: 17,
@@ -234,8 +250,9 @@ const FOODS = [
         isSale: true,
         description: 'Phiên bản đặc biệt của chả cá Lã Vọng, với hải sản như tôm, mực, cá hồi, ăn kèm với bánh tráng, rau sống, dưa hấu và nước mắm chua ngọt.',
         ingredients: ['Chả cá', 'Tôm', 'Mực', 'Cá hồi', 'Bánh tráng', 'Rau sống', 'Dưa hấu', 'Nước mắm'],
-        rating: 4.9,
-        reviewCount: 120
+        rating: 5,
+        reviewCount: 120,
+        categoryId: 1
     },
     {
         id: 18,
@@ -249,7 +266,8 @@ const FOODS = [
         description: 'Phiên bản chay của chả cá Lã Vọng, với chả cá chay, bánh tráng, rau sống, dưa hấu và nước mắm chay ngon miệng.',
         ingredients: ['Chả cá chay', 'Bánh tráng', 'Rau sống', 'Dưa hấu', 'Nước mắm chay'],
         rating: 4.5,
-        reviewCount: 90
+        reviewCount: 90,
+        categoryId: 1
     },
     {
         id: 19,
@@ -262,8 +280,9 @@ const FOODS = [
         isSale: true,
         description: 'Món gỏi đu đủ tươi ngon kết hợp với thịt bò xay nhuyễn, ăn kèm với rau sống, hành tây, đậu phộng và nước sốt chua ngọt.',
         ingredients: ['Đu đủ', 'Thịt bò xay', 'Rau sống', 'Hành tây', 'Đậu phộng', 'Nước sốt chua ngọt'],
-        rating: 4.7,
-        reviewCount: 80
+        rating: 3,
+        reviewCount: 80,
+        categoryId: 7
     },
     {
         id: 20,
@@ -277,7 +296,8 @@ const FOODS = [
         description: 'Gỏi đu đủ tươi kết hợp với hải sản như tôm, mực, cá hồi, ăn kèm với rau sống, dưa hấu, hành tây và nước sốt chua ngọt.',
         ingredients: ['Đu đủ', 'Tôm', 'Mực', 'Cá hồi', 'Rau sống', 'Dưa hấu', 'Hành tây', 'Nước sốt chua ngọt'],
         rating: 4.8,
-        reviewCount: 100
+        reviewCount: 100,
+        categoryId: 7
     },
     {
         id: 21,
@@ -290,8 +310,9 @@ const FOODS = [
         isSale: true,
         description: 'Món gỏi đu đủ tươi kết hợp với thịt heo luộc xé nhuyễn, ăn kèm với rau sống, hành tây, đậu phộng và nước sốt chua ngọt.',
         ingredients: ['Đu đủ', 'Thịt heo luộc xé', 'Rau sống', 'Hành tây', 'Đậu phộng', 'Nước sốt chua ngọt'],
-        rating: 4.6,
-        reviewCount: 70
+        rating: 2.6,
+        reviewCount: 70,
+        categoryId: 7
     },
     {
         id: 22,
@@ -305,7 +326,8 @@ const FOODS = [
         description: 'Món bún riêu cua Đông Ba truyền thống, với nước dùng thơm ngon, cua tươi nguyên con, cà chua, rau sống và bún tươi xốp.',
         ingredients: ['Bún tươi', 'Cua tươi', 'Cà chua', 'Rau sống'],
         rating: 4.8,
-        reviewCount: 150
+        reviewCount: 150,
+        categoryId: 1
     },
     {
         id: 23,
@@ -318,8 +340,9 @@ const FOODS = [
         isSale: true,
         description: 'Món bún riêu cua Đông Ba đậm đà vị cay, với nước dùng hấp dẫn, cua tươi, cà chua, rau sống, ớt và bún tươi.',
         ingredients: ['Bún tươi', 'Cua tươi', 'Cà chua', 'Rau sống', 'Ớt'],
-        rating: 4.7,
-        reviewCount: 120
+        rating: 3.7,
+        reviewCount: 120,
+        categoryId: 1
     },
     {
         id: 24,
@@ -334,6 +357,7 @@ const FOODS = [
         ingredients: ['Bún tươi', 'Cua tươi', 'Nấm đông cô', 'Cà chua', 'Rau sống'],
         rating: 4.9,
         reviewCount: 90
+        , categoryId: 1
     },
     {
         id: 25,
@@ -346,8 +370,9 @@ const FOODS = [
         isSale: false,
         description: 'Bánh cuốn truyền thống được nhân với thịt nướng mềm mại, thơm ngon, cuốn cùng bánh mỏng mịn, ăn kèm với nước chấm đậm đà.',
         ingredients: ['Bánh cuốn', 'Thịt nướng', 'Nước chấm'],
-        rating: 4.7,
-        reviewCount: 120
+        rating: 5,
+        reviewCount: 120,
+        categoryId: 1
     },
     {
         id: 26,
@@ -361,7 +386,8 @@ const FOODS = [
         description: 'Bánh cuốn thơm ngon, cuốn cùng sả ớt thơm, ăn kèm với nước chấm chua ngọt, tạo nên món ăn hấp dẫn và độc đáo.',
         ingredients: ['Bánh cuốn', 'Sả ớt', 'Nước chấm'],
         rating: 4.6,
-        reviewCount: 110
+        reviewCount: 110,
+        categoryId: 1
     },
     {
         id: 27,
@@ -375,7 +401,8 @@ const FOODS = [
         description: 'Bánh cuốn thơm ngon, nhân với tôm thịt tươi ngon, cuốn cùng bánh mỏng mịn, ăn kèm với nước chấm đậm đà.',
         ingredients: ['Bánh cuốn', 'Tôm', 'Thịt', 'Nước chấm'],
         rating: 4.8,
-        reviewCount: 100
+        reviewCount: 100,
+        categoryId: 1
     },
     {
         id: 28,
@@ -389,7 +416,8 @@ const FOODS = [
         description: 'Miến trộn hấp dẫn với sự kết hợp độc đáo của thịt bò nướng mềm ngon, rau củ tươi ngon và sốt thơm ngon, tạo nên một món ăn dinh dưỡng và hấp dẫn.',
         ingredients: ['Thịt bò', 'Rau củ', 'Sốt'],
         rating: 4.5,
-        reviewCount: 90
+        reviewCount: 90,
+        categoryId: 1
     },
     {
         id: 29,
@@ -403,7 +431,8 @@ const FOODS = [
         description: 'Miến trộn ngon miệng với gà luộc thơm ngon, rau củ tươi ngon và sốt chua ngọt thanh mát, là lựa chọn lý tưởng cho những ai yêu thích gà.',
         ingredients: ['Gà luộc', 'Rau củ', 'Sốt'],
         rating: 4.6,
-        reviewCount: 100
+        reviewCount: 100,
+        categoryId: 1
     },
     {
         id: 30,
@@ -417,7 +446,8 @@ const FOODS = [
         description: 'Miếng trộn mang hương vị cay nóng đặc trưng của ẩm thực Hàn Quốc, với miến mềm mịn, thịt gà nướng, rau củ tươi ngon, và sốt cay đậm đà, là món ăn hấp dẫn cho những ai yêu thích món ăn cay.',
         ingredients: ['Miến', 'Thịt gà', 'Rau củ', 'Sốt cay'],
         rating: 4.7,
-        reviewCount: 120
+        reviewCount: 120,
+        categoryId: 1
     }
 ];
 

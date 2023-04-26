@@ -3,7 +3,7 @@ const RESTAURANTS = [
         id: '1',
         name: 'Phở Hòa',
         tags: ['Phở', 'Món nóng'],
-        rating: 4.7,
+        rating: 5,
         distance: 3.2,
         deliveryTime: 40,
         reviewCount: 527,
@@ -11,6 +11,7 @@ const RESTAURANTS = [
         isFav: true,
         isBrand: false,
         isSale: false,
+        categoryId: 1
     },
     {
         id: '2',
@@ -24,6 +25,7 @@ const RESTAURANTS = [
         isFav: false,
         isBrand: false,
         isSale: true,
+        categoryId: 1
     },
     {
         id: '3',
@@ -37,12 +39,13 @@ const RESTAURANTS = [
         isFav: true,
         isBrand: false,
         isSale: false,
+        categoryId: 7
     },
     {
         id: '4',
         name: 'Bánh mì Phượng',
         tags: ['Bánh mì'],
-        rating: 4.4,
+        rating: 3.4,
         distance: 1.2,
         deliveryTime: 20,
         reviewCount: 188,
@@ -50,12 +53,13 @@ const RESTAURANTS = [
         isFav: false,
         isBrand: false,
         isSale: true,
+        categoryId: 2
     },
     {
         id: '5',
         name: 'Cơm tấm Cali',
         tags: ['Cơm Tấm'],
-        rating: 4.6,
+        rating: 3.6,
         distance: 2.0,
         deliveryTime: 30,
         reviewCount: 1273,
@@ -63,12 +67,13 @@ const RESTAURANTS = [
         isFav: true,
         isBrand: true,
         isSale: false,
+        categoryId: 1
     },
     {
         id: '6',
         name: 'Chả cá Lã Vọng',
         tags: ['Chả cá'],
-        rating: 4.8,
+        rating: 2.8,
         distance: 4.0,
         deliveryTime: 50,
         reviewCount: 1537,
@@ -76,6 +81,7 @@ const RESTAURANTS = [
         isFav: false,
         isBrand: false,
         isSale: false,
+        categoryId: 1
     },
     {
         id: '7',
@@ -89,12 +95,13 @@ const RESTAURANTS = [
         isFav: true,
         isBrand: true,
         isSale: false,
+        categoryId: 7
     },
     {
         id: '8',
         name: 'Bún riêu cua Đông Ba',
         tags: ['Bún riêu'],
-        rating: 4.5,
+        rating: 3.5,
         distance: 3.5,
         deliveryTime: 45,
         reviewCount: 1477,
@@ -102,6 +109,7 @@ const RESTAURANTS = [
         isFav: false,
         isBrand: false,
         isSale: true,
+        categoryId: 1
     },
     {
         id: '9',
@@ -115,6 +123,7 @@ const RESTAURANTS = [
         isFav: false,
         isBrand: false,
         isSale: true,
+        categoryId: 1
     },
     {
         id: '10',
@@ -128,6 +137,7 @@ const RESTAURANTS = [
         isFav: true,
         isBrand: true,
         isSale: true,
+        categoryId: 1
     },
 ];
 export default RESTAURANTS;

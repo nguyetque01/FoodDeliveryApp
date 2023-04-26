@@ -1,38 +1,44 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Alert, StyleSheet, StatusBar, ScrollView, FlatList } from 'react-native';
-import { Button, Colors, Text, View, TouchableOpacity, TextField } from 'react-native-ui-lib';
-import { FoodCard } from '../components';
-import { VOUCHERCODES } from '../data';
-import { useSelector, useDispatch } from 'react-redux';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-
+import React from 'react';
+import { StyleSheet, StatusBar, FlatList } from 'react-native';
+import { Button, Colors, Text, View, TouchableOpacity, Card } from 'react-native-ui-lib';
+import { useSelector } from 'react-redux';
 
 const OrdersScreen = ({ navigation }) => {
-
-    const cartItems = useSelector(state => state.cartItems)  // Lấy ra danh sách giỏ hàng từ store
-    const [newCartItems, setNewCartItems] = useState(cartItems) // Tạo danh sách giỏ hàng mới để thay đổi
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        // Gán cartItems cho newCartItems
-        setNewCartItems(cartItems);
-    }, [cartItems]);
-
+    const orderItems = useSelector(state => state.orderItems)
     return (
         <View flex-1>
             <StatusBar barStyle="light-content"
                 backgroundColor={Colors.primary}
                 translucent
             />
-            {newCartItems?.length !== 0 &&
-                <View>
-                    <Text>Đơn hàng</Text>
+            {orderItems.length !== 0 &&
+                <View paddingH-24 paddingV-24>
+                    <FlatList
+                        data={orderItems}
+                        key={item => item.id}
+                        renderItem={({ item }) =>
+                            <Card style={styles.order}>
+                                <TouchableOpacity onPress={() => { navigation.navigate('OrderDetail', { orderId: item.id }) }} key={item.id}>
+                                    <View row spread>
+                                        <Text text60 grey10>#{item.id}</Text>
+                                        <Text text70M grey10>{item.date.toLocaleString()}</Text>
+                                    </View>
+                                    <View row spread marginT-12 centerV>
+                                        <Text text70 green10 flex-1>{item.state}</Text>
+                                        <Text text70 grey20 marginR-10 style={{ textDecorationLine: 'line-through' }}>
+                                            {item.subTotalPrice.toLocaleString()}đ
+                                        </Text>
+                                        <Text text60 yellow10>{item.totalPrice.toLocaleString()}đ</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </Card>
+                        }
+                    />
                 </View>
             }
-            {newCartItems?.length === 0 &&
+            {orderItems.length === 0 &&
                 <View flex-1 center>
-                    <Text text60M center marginH-40 marginB-16>Chưa có món ăn nào được thêm vào giỏ hàng!</Text>
+                    <Text text60M center marginH-40 marginB-16>Chưa có đơn hàng nào!</Text>
                     <Button
                         label="Xem địa điểm và món ăn"
                         onPress={() => navigation.navigate("Xem tất cả")}
@@ -44,29 +50,13 @@ const OrdersScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    bottomBar: {
-        paddingVertical: 12,
-        paddingHorizontal: 24,
-        backgroundColor: Colors.white
-    },
-    bottomButton: {
-        flexDirection: 'row',
-        paddingVertical: 12,
-        borderRadius: 12,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    bottomButtonTitle: {
-        fontSize: 20,
-        fontWeight: '600',
-        marginLeft: 8
-    },
-    input: {
-        height: 40,
+    order: {
+        marginBottom: 20,
+        paddingHorizontal: 20,
+        paddingVertical: 16,
+        borderRadius: 10,
         borderWidth: 1,
-        borderColor: Colors.grey20,
-        paddingHorizontal: 12,
-        borderRadius: 8,
+        borderColor: Colors.primary
     }
 });
 

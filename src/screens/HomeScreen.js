@@ -4,7 +4,7 @@ import { Colors, Text, View, SegmentedControl, TouchableOpacity } from 'react-na
 import { HomeHeader, RestaurantCard, RestaurantItem } from '../components';
 import { RESTAURANTS } from '../data';
 const HomeScreen = (props) => {
-    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [selectedIndex, setSelectedIndex] = useState(1);
     const handleIndexChange = (index) => {
         setSelectedIndex(index);
     };
@@ -39,11 +39,11 @@ const HomeScreen = (props) => {
                     <View marginT-16 marginB-125>
                         <SegmentedControl
                             segments={[
-                                { label: 'Gần tôi', value: 0 },
-                                { label: 'Mới nhất', value: 1 },
-                                { label: 'Bán chạy', value: 2 },
-                                { label: 'Giảm giá', value: 3 },
-                                { label: 'Đánh giá', value: 4 },
+                                { label: 'Gần tôi', value: 1 },
+                                { label: 'Mới nhất', value: 2 },
+                                { label: 'Bán chạy', value: 3 },
+                                { label: 'Giảm giá', value: 4 },
+                                { label: 'Đánh giá', value: 5 },
                             ]}
                             selectedIndex={selectedIndex}
                             onValueChange={handleIndexChange}
