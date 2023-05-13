@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 600,
         color: Colors.yellow10,
-        marginRight: 70
+        marginRight: 54 //
     },
     deleteButton: {
         position: 'absolute',
