@@ -8,7 +8,7 @@ const RESTAURANTS = [
         deliveryTime: 40,
         reviewCount: 527,
         image: require('../assets/images/restaurants/pho-hoa.jpg'),
-        isFav: true,
+        isFav: false,
         isBrand: false,
         isSale: false,
         categoryId: 1
@@ -36,7 +36,7 @@ const RESTAURANTS = [
         deliveryTime: 25,
         reviewCount: 292,
         image: require('../assets/images/restaurants/banh-xeo-46A.jpg'),
-        isFav: true,
+        isFav: false,
         isBrand: false,
         isSale: false,
         categoryId: 7
@@ -92,7 +92,7 @@ const RESTAURANTS = [
         deliveryTime: 35,
         reviewCount: 237,
         image: require('../assets/images/restaurants/goi-du-du-ty-thy.jpg'),
-        isFav: true,
+        isFav: false,
         isBrand: true,
         isSale: false,
         categoryId: 7
@@ -120,7 +120,7 @@ const RESTAURANTS = [
         deliveryTime: 30,
         reviewCount: 547,
         image: require('../assets/images/restaurants/banh-cuon-tay-ho.jpg'),
-        isFav: false,
+        isFav: true,
         isBrand: false,
         isSale: true,
         categoryId: 1
@@ -134,7 +134,7 @@ const RESTAURANTS = [
         deliveryTime: 25,
         reviewCount: 527,
         image: require('../assets/images/restaurants/mien-tron-thanh-xuan.jpg'),
-        isFav: true,
+        isFav: false,
         isBrand: true,
         isSale: true,
         categoryId: 1

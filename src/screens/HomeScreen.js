@@ -9,6 +9,15 @@ const HomeScreen = (props) => {
         setSelectedIndex(index);
     };
 
+    useEffect(() => {
+        return () => props.navigation.getParent()?.setOptions({
+            tabBarStyle: {
+                height: 58,
+                paddingBottom: 8
+            },
+        });
+    }, [props.navigation]);
+
     return (
         <View marginB-84>
             <StatusBar barStyle="light-content"

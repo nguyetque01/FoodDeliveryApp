@@ -10,7 +10,7 @@ const initialState = {
     cartItems: [],
     orderItems: [],
     auth: {
-        isLoggedIn: false,
+        isLoggedIn: true,
         user: {},
     }
 }
