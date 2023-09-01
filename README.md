@@ -37,7 +37,3 @@ Follow these steps to get started with FoodDeliveryApp:
    npm start
    ```
 
-## License 📜
-
-This application is distributed under the MIT License.
-
